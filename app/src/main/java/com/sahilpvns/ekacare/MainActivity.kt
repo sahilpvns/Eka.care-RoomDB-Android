@@ -1,48 +1,54 @@
 package com.sahilpvns.ekacare
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.icu.util.Calendar
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.sahilpvns.ekacare.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private var binding: ActivityMainBinding? = null
-
-    private val userViewModel: UserViewModel by viewModels()
-
+    private lateinit var userViewModel: UserViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        binding?.viewModel = userViewModel
-        binding?.lifecycleOwner = this
+        initViewModelProvider()
+        showDatePicker()
+        saveButton()
 
-        binding?.etDOB?.setOnClickListener {
-            showDatePickerDialog(binding?.etDOB)
-        }
+    }
 
+    private fun saveButton() {
         binding?.btnSave?.setOnClickListener {
             saveUser()
         }
-
     }
-    @SuppressLint("SetTextI18n")
-    private fun showDatePickerDialog(etDOB: EditText?) {
+
+    private fun showDatePicker() {
+        binding?.etDOB?.setOnClickListener {
+            showDatePickerDialog()
+        }
+    }
+
+    private fun initViewModelProvider() {
+        userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
+    }
+
+    private fun showDatePickerDialog() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
         val datePickerDialog = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
-            etDOB?.setText("$selectedDay/${selectedMonth + 1}/$selectedYear")
+            binding?.etDOB?.setText("$selectedDay/${selectedMonth + 1}/$selectedYear")
         }, year, month, day)
+
         datePickerDialog.show()
 
     }
