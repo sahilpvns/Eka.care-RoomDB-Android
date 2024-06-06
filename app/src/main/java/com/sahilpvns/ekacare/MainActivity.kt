@@ -62,9 +62,9 @@ class MainActivity : AppCompatActivity() {
         if (name.isNotEmpty() && age != null && dob.isNotEmpty() && address.isNotEmpty()) {
             val user = UserInfo(name = name, age = age, dob = dob, address = address)
             userViewModel.insert(user)
-            Toast.makeText(this, "User saved!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "User saved!", Toast.LENGTH_LONG).show()
         } else {
-            Toast.makeText(this, "Please fill all fields!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please fill all fields!", Toast.LENGTH_LONG).show()
         }
     }
 

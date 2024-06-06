@@ -10,26 +10,37 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="16dp"
+        android:background="@android:color/white"
+        android:paddingHorizontal="32dp"
         tools:context=".MainActivity">
 
-        <EditText
-            android:id="@+id/etName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:hint="Name"
-            android:inputType="textPersonName"
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:src="@drawable/carelogo"
+            android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:id="@+id/etName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:hint="@string/name"
+            app:layout_constraintStart_toStartOf="parent"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
+
+        <EditText
             android:id="@+id/etAge"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:hint="Age"
+            android:hint="@string/age"
+            android:layout_marginTop="16dp"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,9 +50,9 @@
             android:id="@+id/etDOB"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
             android:focusable="false"
-            android:hint="Date of Birth"
+            android:layout_marginTop="16dp"
+            android:hint="@string/date_of_birth"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etAge" />
@@ -50,8 +61,8 @@
             android:id="@+id/etAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:hint="Address"
+            android:hint="@string/address"
+            android:layout_marginTop="16dp"
             android:inputType="textPostalAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,8 +72,8 @@
             android:id="@+id/btnSave"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Save"
+            android:layout_marginTop="24dp"
+            android:text="@string/save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etAddress" />
